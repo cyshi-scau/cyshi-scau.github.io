@@ -185,8 +185,6 @@ h2 {
 .contact-card { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 23px 25px; border-left: 3px solid var(--green); background: var(--soft-green); }
 .contact-label { display: block; margin-bottom: 5px; color: var(--muted); letter-spacing: .08em; }
 .contact-card p { margin-bottom: 0; color: var(--navy); font-size: 15px; font-weight: 600; }
-.email-actions { display: flex; align-items: baseline; flex-wrap: wrap; gap: 15px; }
-.send-email { font-size: 13px; }
 .site-footer { padding-top: 23px; border-top: 1px solid var(--line); color: #8390a0; font-size: 12px; line-height: 1.7; }
 .site-footer p { margin-bottom: 3px; }
 

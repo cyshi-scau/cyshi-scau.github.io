@@ -133,20 +133,20 @@ h2 {
 .contact-email-copy .contact-label { margin-bottom: 0; }
 .email-copy .email-address { border-bottom: 1px dashed #a8c9bd; }
 
-.admission-section { margin-bottom: 66px; padding: 30px 32px 34px; background: var(--navy-deep); color: #eaf2f7; }
+.admission-section { margin-bottom: 66px; padding: 30px 32px 34px; border: 1px solid #c9d9dd; background: #eaf2f3; color: var(--navy); }
 .section-heading { display: flex; align-items: baseline; gap: 13px; margin-bottom: 24px; }
 .section-heading h2 { margin-bottom: 0; }
 .section-number { flex: 0 0 auto; color: var(--green); font-family: "SFMono-Regular", Consolas, monospace; letter-spacing: .05em; }
-.section-heading-light h2, .admission-section h2 { color: #f4f8fb; }
-.section-heading-light .section-number { color: #98c9bd; }
-.admission-card { padding: 26px 28px 24px; border: 1px solid rgba(205, 227, 234, .3); background: rgba(255, 255, 255, .055); }
-.admission-card p { color: #dbe7ee; font-size: 15px; }
-.admission-lead { margin-bottom: 8px; color: #fff !important; font-family: Georgia, "Songti SC", "STSong", "SimSun", serif; font-size: 22px !important; }
-.admission-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 25px 0 19px; padding-top: 20px; border-top: 1px solid rgba(205, 227, 234, .25); }
-.admission-label { display: block; margin-bottom: 5px; color: #9dcbbf; letter-spacing: .08em; }
+.section-heading-light h2, .admission-section h2 { color: var(--navy); }
+.section-heading-light .section-number { color: var(--green); }
+.admission-card { padding: 26px 28px 24px; border: 1px solid rgba(20, 52, 75, .16); background: rgba(255, 255, 255, .62); }
+.admission-card p { color: #496173; font-size: 15px; }
+.admission-lead { margin-bottom: 8px; color: var(--navy) !important; font-family: Georgia, "Songti SC", "STSong", "SimSun", serif; font-size: 22px !important; }
+.admission-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 25px 0 19px; padding-top: 20px; border-top: 1px solid rgba(20, 52, 75, .16); }
+.admission-label { display: block; margin-bottom: 5px; color: var(--green); letter-spacing: .08em; }
 .admission-columns p { margin-bottom: 0; line-height: 1.8; }
-.text-link-light { color: #b9e1d4; font-size: 14px; font-weight: 600; }
-.text-link-light:hover, .text-link-light:focus { color: #fff; }
+.text-link-light { color: var(--green); font-size: 14px; font-weight: 600; }
+.text-link-light:hover, .text-link-light:focus { color: var(--navy); }
 
 .standard-section, .contact-section { margin-bottom: 68px; }
 .research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
@@ -171,16 +171,18 @@ h2 {
 .project-card h3 { min-height: 51px; margin-bottom: 7px; }
 .project-role { margin-bottom: 0; color: var(--green); font-size: 13px; font-weight: 600; }
 
-.section-note, .corresponding-note { color: var(--muted); font-size: 13px; }
-.section-note { margin: -8px 0 20px; }
 .publication-list { margin: 0; padding: 0; list-style: none; counter-reset: publication; }
 .publication-item { position: relative; margin-bottom: 12px; padding: 20px 22px 19px 58px; border: 1px solid var(--line); background: var(--card); counter-increment: publication; }
 .publication-item::before { content: "[" counter(publication) "]"; position: absolute; top: 20px; left: 20px; color: var(--violet); font-family: "SFMono-Regular", Consolas, monospace; font-size: 12px; }
 .publication-title { margin-bottom: 8px; color: var(--navy); font-family: Georgia, "Times New Roman", "Songti SC", "SimSun", serif; font-size: 16px; font-weight: 600; line-height: 1.55; }
+.publication-title a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(20, 52, 75, .22); }
+.publication-title a:hover, .publication-title a:focus { color: var(--violet); border-bottom-color: currentColor; }
 .publication-authors, .publication-venue { color: var(--muted); font-size: 13px; line-height: 1.7; }
 .publication-authors strong { color: var(--navy); font-weight: 700; }
 .publication-venue { font-style: italic; }
-.corresponding-note { margin: 15px 0 0; }
+.publication-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.publication-links a { color: var(--violet); font-size: 12px; font-weight: 600; text-decoration: none; }
+.publication-links a:hover, .publication-links a:focus { color: var(--navy); text-decoration: underline; }
 
 .contact-card { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 23px 25px; border-left: 3px solid var(--green); background: var(--soft-green); }
 .contact-label { display: block; margin-bottom: 5px; color: var(--muted); letter-spacing: .08em; }

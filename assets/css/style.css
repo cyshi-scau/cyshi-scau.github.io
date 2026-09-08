@@ -14,7 +14,11 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 body {
   margin: 0;
   padding: 0;
@@ -24,6 +28,11 @@ body {
   font-size: 16px;
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
+}
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 a { color: var(--green); text-decoration: none; }
 a:hover, a:focus { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
@@ -57,7 +66,9 @@ a:hover, a:focus { color: var(--navy); text-decoration: underline; text-underlin
   letter-spacing: .08em;
   line-height: 1.65;
   text-align: center;
+  overflow: hidden;
 }
+.avatar-placeholder img { width: 100%; height: 100%; object-fit: cover; }
 .sidebar-kicker, .eyebrow, .section-number, .fact-label, .admission-label, .contact-label, .card-index {
   color: var(--green);
   font-size: 11px;
@@ -133,6 +144,9 @@ h2 {
 .contact-email-copy .contact-label { margin-bottom: 0; }
 .email-copy .email-address { border-bottom: 1px dashed #a8c9bd; }
 
+.hero-facts > *, .research-grid > *, .project-list > *, .contact-card > *, .admission-columns > * { min-width: 0; }
+.publication-title, .publication-authors, .publication-venue, .email-address, .sidebar-email, .contact-card p { overflow-wrap: anywhere; }
+
 .admission-section { margin-bottom: 66px; padding: 30px 32px 34px; border: 1px solid #c9d9dd; background: #eaf2f3; color: var(--navy); }
 .section-heading { display: flex; align-items: baseline; gap: 13px; margin-bottom: 24px; }
 .section-heading h2 { margin-bottom: 0; }
@@ -193,28 +207,50 @@ h2 {
 
 @media (max-width: 940px) {
   .wrapper { width: min(100% - 40px, 760px); display: block; }
-  .site-sidebar { min-height: 0; padding: 38px 0 28px; position: static; }
-  .avatar-placeholder { width: 112px; height: 112px; margin-bottom: 19px; }
+  .site-sidebar {
+    min-height: 0;
+    padding: 38px 0 28px;
+    position: static;
+    display: grid;
+    grid-template-columns: minmax(0, max-content) 112px;
+    column-gap: 28px;
+    align-items: start;
+  }
+  .avatar-placeholder { grid-column: 2; grid-row: 1 / span 6; width: 112px; height: 112px; margin: 0; align-self: center; }
+  .sidebar-kicker, .site-sidebar h1, .sidebar-position, .sidebar-affiliation, .profile-facts, .sidebar-email { grid-column: 1; }
   .site-sidebar h1 { font-size: 30px; }
-  .side-nav { display: flex; flex-wrap: wrap; gap: 0 20px; margin-top: 24px; padding-top: 13px; }
-  .side-nav a { padding: 3px 0; }
+  .side-nav { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 0 20px; margin-top: 24px; padding-top: 13px; }
+  .side-nav a { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; padding: 8px 0; }
+  .email-copy { min-width: 0; min-height: 44px; align-items: center; }
+  .contact-email-copy { align-items: flex-start; }
+  .publication-links { gap: 2px 12px; }
+  .publication-links a { display: inline-flex; min-width: 40px; min-height: 40px; align-items: center; }
   .content { padding-top: 25px; }
 }
 @media (max-width: 640px) {
   body { font-size: 15px; }
-  .wrapper { width: min(100% - 30px, 560px); }
-  .site-sidebar { padding-top: 25px; }
+  .wrapper { width: min(100% - 24px, 560px); }
+  .site-sidebar {
+    padding: 24px 0 20px;
+    grid-template-columns: minmax(0, max-content) 88px;
+    column-gap: 18px;
+  }
+  .avatar-placeholder { width: 88px; height: 88px; }
+  .profile-facts { grid-template-columns: repeat(3, max-content); gap: 4px 18px; margin-top: 14px; }
+  .site-sidebar h1 { font-size: 28px; }
+  .sidebar-position { margin: 8px 0; }
   .sidebar-affiliation { margin-bottom: 8px; }
-  .side-nav { gap: 0 14px; }
-  .side-nav a { font-size: 12px; }
+  .side-nav { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 0 4px; margin-top: 16px; padding-top: 10px; }
+  .side-nav a { grid-column: span 2; justify-content: center; padding: 8px 4px; font-size: 12px; text-align: center; }
+  .side-nav a:nth-child(5) { grid-column: 2 / span 2; }
   .content { padding-top: 18px; padding-bottom: 34px; }
   .hero-section { padding-bottom: 42px; }
-  .hero-section h2 { font-size: 29px; }
-  .hero-intro { font-size: 16px; line-height: 1.9; }
+  .hero-section h2 { font-size: clamp(26px, 7.6vw, 29px); }
+  .hero-intro { margin-bottom: 30px; font-size: 16px; line-height: 1.9; }
   .hero-facts, .research-grid, .project-list, .contact-card, .admission-columns { grid-template-columns: 1fr; }
   .fact-item { padding: 13px 15px; }
-  .admission-section { margin-right: -5px; margin-left: -5px; padding: 23px 18px 22px; }
-  .admission-card { padding: 20px 18px 19px; }
+  .admission-section { padding: 23px 14px 22px; }
+  .admission-card { padding: 20px 14px 19px; }
   .admission-lead { font-size: 20px !important; }
   .standard-section, .contact-section { margin-bottom: 49px; }
   .section-heading { margin-bottom: 19px; }
@@ -222,11 +258,27 @@ h2 {
   .research-card { min-height: 0; }
   .card-index { margin-bottom: 19px; }
   .timeline-item { grid-template-columns: 1fr; gap: 4px; padding: 18px 0; }
+  .project-meta { align-items: flex-start; flex-wrap: wrap; }
   .project-card h3 { min-height: 0; }
   .publication-item { margin-bottom: 10px; padding: 18px 16px 17px; }
   .publication-item::before { position: static; display: block; margin-bottom: 8px; }
   .publication-title { font-size: 15px; }
   .contact-card { gap: 16px; padding: 18px 19px; }
+}
+@media (max-width: 420px) {
+  .site-sidebar { grid-template-columns: minmax(0, max-content) 82px; column-gap: 14px; }
+  .avatar-placeholder { width: 82px; height: 82px; }
+  .profile-facts { grid-template-columns: repeat(2, max-content); gap: 4px 16px; }
+  .content { padding-top: 14px; }
+  .hero-section { padding-bottom: 36px; }
+  .hero-intro { line-height: 1.82; }
+  .standard-section, .contact-section { margin-bottom: 44px; }
+  .section-heading { gap: 10px; }
+  h2 { font-size: 26px; }
+  .admission-lead { font-size: 19px !important; }
+  .research-card, .project-card { padding: 18px 16px; }
+  .publication-item { padding-right: 14px; padding-left: 14px; }
+  .contact-card { padding-right: 16px; padding-left: 16px; }
 }
 @media print {
   .side-nav { display: none; }

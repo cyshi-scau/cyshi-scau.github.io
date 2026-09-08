@@ -230,10 +230,10 @@ h2 {
   .wrapper { width: min(100% - 24px, 560px); }
   .site-sidebar {
     padding: 24px 0 20px;
-    grid-template-columns: minmax(0, max-content) 88px;
-    column-gap: 18px;
+    grid-template-columns: minmax(0, 1fr) 100px;
+    column-gap: 20px;
   }
-  .avatar-placeholder { width: 88px; height: 88px; }
+  .avatar-placeholder { width: 100px; height: 100px; }
   .profile-facts { grid-template-columns: repeat(3, max-content); gap: 4px 18px; margin-top: 14px; }
   .site-sidebar h1 { font-size: 28px; }
   .sidebar-position { margin: 8px 0; }
@@ -264,8 +264,8 @@ h2 {
   .contact-card { gap: 16px; padding: 18px 19px; }
 }
 @media (max-width: 420px) {
-  .site-sidebar { grid-template-columns: minmax(0, max-content) 82px; column-gap: 14px; }
-  .avatar-placeholder { width: 82px; height: 82px; }
+  .site-sidebar { grid-template-columns: minmax(0, 1fr) 96px; column-gap: 16px; }
+  .avatar-placeholder { width: 96px; height: 96px; }
   .profile-facts { grid-template-columns: repeat(2, max-content); gap: 4px 16px; }
   .content { padding-top: 14px; }
   .hero-section { padding-bottom: 36px; }
